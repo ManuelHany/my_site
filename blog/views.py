@@ -5,7 +5,7 @@ from collections import OrderedDict
 
 # Create your views here.
 def starting_page(request):
-    return HttpResponse("<h1>load starting page which lists latest blog posts and some welcome text</h1>")
+    return render(request, "blog/index.html")
 
 
 def posts(request):
