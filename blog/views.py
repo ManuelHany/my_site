@@ -9,7 +9,7 @@ def starting_page(request):
 
 
 def posts(request):
-    return HttpResponse("<h1>Load page which lists all blog posts</h1>")
+    return render(request, "blog/all-posts.html")
 
 
 def post_detail(request, slug):
