@@ -9,10 +9,19 @@ from django.utils.text import slugify
 class Tag(models.Model):
     caption = models.CharField(max_length=20)           # very short text.
 
+    def __str__(self):
+        return self.caption
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    e_mail_address = models.EmailField(max_length=100) # EmailField is better than the charfield because it validates the e-mail.
+    email_address = models.EmailField(max_length=100) # EmailField is better than the charfield because it validates the e-mail.
+
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    def __str__(self):
+        return self.full_name()
 
 
 class Post(models.Model):
@@ -24,8 +33,8 @@ class Post(models.Model):
                                                         # 2 reasons why we ommit the db_index=True field:
                                                         # a -> slugfield has default value for db_index=True
                                                         # b -> unique=True implies also that db_index=True
-    content = models.TextField(MinLengthValidator=500)  # Textfield is a large field for text data.
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=False, related_name="posts")
+    content = models.TextField(MinLengthValidator(500))  # Textfield is a large field for text data.
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name="posts")
                                                         # ForeignKey is always added in the many side.
                                                         # as it is a one to many relation, the related_name is usefule,
                                                         # when accessing the field from the "one" side of the relation
