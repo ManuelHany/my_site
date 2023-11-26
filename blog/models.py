@@ -27,7 +27,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     excerpt = models.CharField(max_length=200)
-    image_name = models.CharField(max_length=50)        # later on it can be image uploads.
+    image = models.ImageField(upload_to="posts", null=True)       # later on it can be image uploads.
     date = models.DateField(auto_now=True)              # so when I save it it sets it with the  current date
     slug = models.SlugField(unique=True)                # unique as it will  be the unique identifier for my posts endpoints
                                                         # 2 reasons why we ommit the db_index=True field:
