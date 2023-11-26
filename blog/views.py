@@ -1,4 +1,5 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -12,7 +13,11 @@ class StartingPageView(ListView):
     template_name = "blog/index.html"
     context_object_name = "posts"
     ordering = ["-date"]
-    paginate_by = 3
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = queryset[:3]
+        return data
 
 
 class PostsView(ListView):
@@ -25,7 +30,7 @@ class PostsView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = "blog/post-detail.html"
-    context_object_name = "post"
+    # context_object_name = "post" ==> no need here because the model is named Post itself.
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
