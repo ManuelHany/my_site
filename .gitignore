@@ -132,7 +132,7 @@ media_email/
 !**/migrations
 !**/migrations/__init__.py
 
-*/static
+# */static
 
 # Ignore test_activity.py
 test_activity.py
