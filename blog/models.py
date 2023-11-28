@@ -40,4 +40,12 @@ class Post(models.Model):
                                                         # when accessing the field from the "one" side of the relation
                                                         # using the reverse method.
     tags = models.ManyToManyField(Tag, null=True)       # where to put the ManyToMany relation depends on your common sense.
+
+
+class Comment(models.Model):
+    user_name = models.CharField(max_length=120)
+    user_email = models.EmailField()
+    text = models.TextField(max_length=400)
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments")
     
