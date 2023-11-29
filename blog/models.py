@@ -41,6 +41,9 @@ class Post(models.Model):
                                                         # using the reverse method.
     tags = models.ManyToManyField(Tag, null=True)       # where to put the ManyToMany relation depends on your common sense.
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     user_name = models.CharField(max_length=120)
