@@ -33,7 +33,7 @@ class Post(models.Model):
                                                         # 2 reasons why we ommit the db_index=True field:
                                                         # a -> slugfield has default value for db_index=True
                                                         # b -> unique=True implies also that db_index=True
-    content = models.TextField(MinLengthValidator(500))  # Textfield is a large field for text data.
+    content = models.TextField(validators=[MinLengthValidator(500)])  # Textfield is a large field for text data.
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name="posts")
                                                         # ForeignKey is always added in the many side.
                                                         # as it is a one to many relation, the related_name is usefule,
