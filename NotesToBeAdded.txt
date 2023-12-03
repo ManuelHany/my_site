@@ -1,0 +1,2 @@
+# We always need to collect static files to be served by server. 
+# in the case of development server, Django collects static for us under the fhood.
