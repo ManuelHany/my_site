@@ -1,2 +1,12 @@
 # We always need to collect static files to be served by server. 
 # in the case of development server, Django collects static for us under the fhood.
+# Steps:
+1- set debug to false 
+2- various look on settings, apps installed and every thing
+3- collecting static and setting its root folder. 
+4- choose a method of the 3 for serving the static files. 
+5- make sure you have run makemigrations, and migrate commands.
+6- make sure you have a super user, and database is initialized with its schema.
+7- make sure you run your project inside a virtual env.
+8- from inside the virtual env, run ==> python -m pip freeze > requirements.txt
+9- 
