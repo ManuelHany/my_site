@@ -9,4 +9,16 @@
 6- make sure you have a super user, and database is initialized with its schema.
 7- make sure you run your project inside a virtual env.
 8- from inside the virtual env, run ==> python -m pip freeze > requirements.txt
-9- 
+9- elasticBeanStalk ==> https://us-east-1.console.aws.amazon.com/elasticbeanstalk/home?region=us-east-1#/welcome
+10 - what django config does is that it tells elastic bean stalk that any request should be forwarded to this python object file.
+11- folders/files to be uploaded:
+    - .ebextensiont
+    - blog
+    - db.sqlite3
+    - manage.py
+    - my_site
+    - requirements.txt 
+    - staticefiles
+    - templates
+    - uploads
+
